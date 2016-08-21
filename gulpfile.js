@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var AUTOPREFIXER_BROWSER = ['last 2 versions'];
+var webserver = require('gulp-webserver');
 
 gulp.task('clean', function () {
   return del(['dist/']);
@@ -43,6 +44,18 @@ gulp.task('copy_src', function () {
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer(AUTOPREFIXER_BROWSER))
     .pipe(gulp.dest('dist/css/'));
+  // index
+  gulp.src('index.html')
+    .pipe(gulp.dest('dist/'));
+
+});
+
+gulp.task('server', function() {
+  gulp.src('dist')
+    .pipe(webserver({
+      fallback: 'index.html',
+      open: true
+    }));
 });
 
 gulp.task('copy', ['copy_modules', 'copy_lib', 'copy_src']);
