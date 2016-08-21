@@ -17,14 +17,45 @@ function init() {
       .on('click', function () {
         drop_block($(ele).attr('data-in'), $(this));
       })
-  })
+  });
+  // 鼠标滑过事件，取4个数字
+  var listHash = {},
+    count = 0;
+  $('.main')
+    .on('mousedown', function () {
+      listHash = {};
+      count = 0;
+      $('.main')
+        .on('mousemove', function (e) {
+          var index = Math.floor((e.pageX - $('.main').offset().top) / 125) + COLUMN * Math.floor((e.pageY - $('.main').offset().left) / 125);
+          if (!listHash[index] && count < 4) {
+            listHash[index] = $('.block:eq(' + index + ')').html();
+            count++;
+          }
+        })
+    })
+    .on('mouseup', function () {
+      $('.main').off('mousemove');
+      var listArr = [],
+        listIndexArr = [];
+      for (x in listHash) {
+        listArr.push(listHash[x])
+        listIndexArr.push(x)
+      }
+      if (listArr.length < 4) {
+        console.log('未取满4个数字')
+      } else {
+        console.log(listArr.sort())
+        console.log(listIndexArr.sort())
+      }
+    })
 }
 // 处理下落
 function drop_block(index, remove) {
   remove
     .css('z-index', '999')
     .addClass('rotateOut animated')
-    .one('webkitAnimationEnd animationEnd', function(){
+    .one('webkitAnimationEnd animationEnd', function () {
       remove.remove();
     });
   var hideBlockColumn = index % COLUMN;
@@ -47,7 +78,7 @@ function add_block(col) {
   $('.block:hidden')
     .show()
     .addClass('zoomIn animated')
-    .one('webkitAnimationEnd animationEnd', function(){
+    .one('webkitAnimationEnd animationEnd', function () {
       $(this).removeClass('zoomIn animated')
     })
     .on('click', function () {
