@@ -33,15 +33,8 @@ function drop_block(index, remove) {
     if ($(this).attr('data-in') % COLUMN == hideBlockColumn && Math.ceil($(this).attr('data-in') / ROW) < hideBlockRow) {
       console.log($(this).css('top'));
       $(this)
-        // 下落时移除监听
-        .off('click')
         .css({
           'top': parseInt($(this).css('top').split('px')[0]) + WIDTH + MARGIN + 'px'
-        })
-        .one('webkitAnimationEnd animationEnd', function(){
-          $(this).on('click', function(){
-            drop_block($(this).attr('data-in'), $(this));
-          })
         })
         .attr('data-in', parseInt($(this).attr('data-in')) + COLUMN)
     }
