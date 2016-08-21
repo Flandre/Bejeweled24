@@ -1,10 +1,14 @@
 # Bejeweled24
 
-[test](https://flandre.github.io/animate.css/)
+[animate test](https://flandre.github.io/animate.css/)
 
-use
+###use
 
 ```bash
+/* install packages */
 npm i
+/* build dist */
 gulp
+/* run server */
+gulp server
 ```

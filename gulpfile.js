@@ -50,13 +50,28 @@ gulp.task('copy_src', function () {
 
 });
 
-gulp.task('server', function() {
+gulp.task('webserver', function () {
   gulp.src('dist')
     .pipe(webserver({
       fallback: 'index.html',
+      livereload: true,
       open: true
     }));
 });
+
+
+gulp.task('watch', function () {
+  gulp.watch('src', ['copy'])
+    .on('change', function (event) {
+      console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    });
+  gulp.watch('index.html', ['copy'])
+    .on('change', function (event) {
+      console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    });
+});
+
+gulp.task('server', ['watch', 'webserver']);
 
 gulp.task('copy', ['copy_modules', 'copy_lib', 'copy_src']);
 
