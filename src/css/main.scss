@@ -1,0 +1,25 @@
+body{
+  user-select: none;
+}
+.main{
+  width: 500px;
+  height: 500px;
+  border: 3px solid #2d2d2d;
+  background: #9a9a9a;
+  border-radius: 10px;
+  position: relative;
+  .block{
+    width:115px;
+    height: 115px;
+    border: 3px solid #753a0f;
+    background: #c65914;
+    border-radius: 10px;
+    position: absolute;
+    font-size:80px;
+    line-height:115px;
+    text-align: center;
+    color:#fff;
+    text-shadow: 3px 3px rgba(0,0,0,0.5);
+    transition: 500ms;
+  }
+}

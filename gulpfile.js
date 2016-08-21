@@ -33,7 +33,7 @@ gulp.task('copy_lib', function () {
 gulp.task('copy_src', function () {
   // js
   gulp.src('src/js/*.js')
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest('dist/js/'));
   // css
   gulp.src('src/css/*.css')
@@ -61,7 +61,7 @@ gulp.task('webserver', function () {
 
 
 gulp.task('watch', function () {
-  gulp.watch('src', ['copy'])
+  gulp.watch('src/*/*', ['copy'])
     .on('change', function (event) {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
