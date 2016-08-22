@@ -13,10 +13,11 @@ function init() {
       .css({
         'top': Math.floor(index / COLUMN) * (WIDTH + MARGIN) + MARGIN + 'px',
         'left': index % ROW * (WIDTH + MARGIN) + MARGIN + 'px'
-      })
-      .on('click', function () {
-        drop_block($(ele).attr('data-in'));
-      })
+      });
+      //  移除点击事件
+      // .on('click', function () {
+      //   drop_block($(ele).attr('data-in'));
+      // })
   });
   // 鼠标滑过事件，取4个数字
   var listHash = {},
@@ -39,8 +40,8 @@ function init() {
       var listArr = [],
         listIndexArr = [];
       for (x in listHash) {
-        listArr.push(listHash[x])
-        listIndexArr.push(x)
+        listArr.push(listHash[x]);
+        listIndexArr.push(x);
       }
       if (listArr.length < 4) {
         console.log('未取满4个数字')
@@ -52,12 +53,11 @@ function init() {
         /*
          * 传入判断函数foo(), 如果返回为true, 执行销毁, false不销毁(暂定)
          */
-        if (foo(listArr)) {
+        // if (foo(listArr)) {
+        if (1) {
           var delay = 0;
           for (var i = 0; i < listIndexArr.length; i++) {
-            setTimeout(function () {
-              drop_block(parseInt(listIndexArr[i]))
-            }, delay);
+            setTimeout("drop_block(" + parseInt(listIndexArr[i]) + ")", delay);
             delay += 500;
           }
         } else {
@@ -68,6 +68,7 @@ function init() {
 }
 // 处理下落
 function drop_block(index) {
+  console.log(index);
   $('.block[data-in="' + index + '"]')
     .css('z-index', '999')
     .addClass('rotateOut animated')
@@ -95,10 +96,11 @@ function add_block(col) {
     .addClass('zoomIn animated')
     .one('webkitAnimationEnd animationEnd', function () {
       $(this).removeClass('zoomIn animated')
-    })
-    .on('click', function () {
-      drop_block($(this).attr('data-in'));
-    })
+    });
+    // 移除点击事件
+    // .on('click', function () {
+    //   drop_block($(this).attr('data-in'));
+    // })
 }
 init();
 
