@@ -15,7 +15,7 @@ function init() {
         'left': index % ROW * (WIDTH + MARGIN) + MARGIN + 'px'
       })
       .on('click', function () {
-        drop_block($(ele).attr('data-in'), $(this));
+        drop_block($(ele).attr('data-in'));
       })
   });
   // 鼠标滑过事件，取4个数字
@@ -51,12 +51,12 @@ function init() {
     })
 }
 // 处理下落
-function drop_block(index, remove) {
-  remove
+function drop_block(index) {
+  $('.block[data-in="'+index+'"]')
     .css('z-index', '999')
     .addClass('rotateOut animated')
     .one('webkitAnimationEnd animationEnd', function () {
-      remove.remove();
+      $('.block[data-in="'+index+'"]').remove();
     });
   var hideBlockColumn = index % COLUMN;
   var hideBlockRow = Math.ceil(index / ROW);
@@ -82,7 +82,7 @@ function add_block(col) {
       $(this).removeClass('zoomIn animated')
     })
     .on('click', function () {
-      drop_block($(this).attr('data-in'), $(this));
+      drop_block($(this).attr('data-in'));
     })
 }
 init();
