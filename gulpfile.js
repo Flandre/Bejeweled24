@@ -18,6 +18,8 @@ gulp.task('copy_modules', function () {
   // bootstrap
   gulp.src('node_modules/bootstrap/dist/css/*.min.css')
     .pipe(gulp.dest('dist/css/'));
+  gulp.src('node_modules/bootstrap/dist/css/*.min.css.map')
+    .pipe(gulp.dest('dist/css/'));
   gulp.src('node_modules/bootstrap/dist/js/*.min.js')
     .pipe(gulp.dest('dist/js/'));
   gulp.src('node_modules/bootstrap/dist/fonts/*')
