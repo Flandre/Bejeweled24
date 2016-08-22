@@ -31,33 +31,30 @@ function init() {
           var index = Math.floor((e.pageX - $('.main').offset().top) / 125) + COLUMN * Math.floor((e.pageY - $('.main').offset().left) / 125);
           if (!listHash[index] && count < 4) {
             listHash[index] = $('.block:eq(' + index + ')').html();
+            $('.block[data-in="' + index + '"]').attr('data-toggle', count);
             count++;
           }
         })
     })
     .on('mouseup', function () {
       $('.main').off('mousemove');
-      var listArr = [],
-        listIndexArr = [];
+      var listArr = [];
       for (x in listHash) {
         listArr.push(listHash[x]);
-        listIndexArr.push(x);
       }
       if (listArr.length < 4) {
         console.log('未取满4个数字')
       } else {
         // 显示的数字
         console.log(listArr.sort());
-        // 划取的位置信息
-        console.log(listIndexArr.sort());
         /*
          * 传入判断函数foo(), 如果返回为true, 执行销毁, false不销毁(暂定)
          */
         // if (foo(listArr)) {
         if (1) {
           var delay = 0;
-          for (var i = 0; i < listIndexArr.length; i++) {
-            setTimeout("drop_block(" + parseInt(listIndexArr[i]) + ")", delay);
+          for (var i = 0; i < 4; i++) {
+            setTimeout("drop_block(" + $('.block[data-toggle="' + i + '"]').attr('data-in') + ")", delay);
             delay += 500;
           }
         } else {
