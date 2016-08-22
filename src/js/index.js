@@ -45,14 +45,30 @@ function init() {
       if (listArr.length < 4) {
         console.log('未取满4个数字')
       } else {
-        console.log(listArr.sort())
-        console.log(listIndexArr.sort())
+        // 显示的数字
+        console.log(listArr.sort());
+        // 划取的位置信息
+        console.log(listIndexArr.sort());
+        /*
+         * 传入判断函数foo(), 如果返回为true, 执行销毁, false不销毁(暂定)
+         */
+        if (foo(listArr)) {
+          var delay = 0;
+          for (var i = 0; i < listIndexArr.length; i++) {
+            setTimeout(function () {
+              drop_block(parseInt(listIndexArr[i]))
+            }, delay);
+            delay += 500;
+          }
+        } else {
+          // 执行+1s操作
+        }
       }
     })
 }
 // 处理下落
 function drop_block(index) {
-  $('.block[data-in="'+index+'"]')
+  $('.block[data-in="' + index + '"]')
     .css('z-index', '999')
     .addClass('rotateOut animated')
     .one('webkitAnimationEnd animationEnd', function () {
@@ -62,7 +78,6 @@ function drop_block(index) {
   var hideBlockRow = Math.ceil(index / ROW);
   $('.block').each(function (idx, ele) {
     if ($(this).attr('data-in') % COLUMN == hideBlockColumn && Math.ceil($(this).attr('data-in') / ROW) < hideBlockRow) {
-      console.log($(this).css('top'));
       $(this)
         .css({
           'top': parseInt($(this).css('top').split('px')[0]) + WIDTH + MARGIN + 'px'
