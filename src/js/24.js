@@ -1,3 +1,3 @@
 function test(){
-	console.log("test");
+	console.log("fulan is baka");
 }
