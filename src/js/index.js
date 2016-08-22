@@ -56,7 +56,7 @@ function drop_block(index) {
     .css('z-index', '999')
     .addClass('rotateOut animated')
     .one('webkitAnimationEnd animationEnd', function () {
-      $('.block[data-in="'+index+'"]').remove();
+      $(this).remove();
     });
   var hideBlockColumn = index % COLUMN;
   var hideBlockRow = Math.ceil(index / ROW);

@@ -26,7 +26,7 @@ gulp.task('copy_modules', function () {
 
 gulp.task('copy_lib', function () {
   // animation
-  gulp.src('lib/animate.css/*.min.css')
+  gulp.src('lib/animate/*.min.css')
     .pipe(gulp.dest('dist/css/'));
 });
 
