@@ -20,6 +20,9 @@ function init() {
     count = 0;
   $('.main')
     .on('mousedown', function () {
+      $('.block')
+        .removeClass('active press')
+        .removeAttr('data-toggle');
       listHash = {};
       count = 0;
       $('.main')
