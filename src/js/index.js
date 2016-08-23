@@ -1,8 +1,12 @@
 // 定义常量
-var ROW = 5,
-  COLUMN = 4,
+var COLUMN = 4,
+  ROW = COLUMN,
   MARGIN = 7,
-  WIDTH = 115;
+  BORDER = 3,
+  MAIN_WIDTH = 500,
+  WIDTH = (MAIN_WIDTH - MARGIN) / COLUMN - MARGIN;
+
+
 // 初始化
 function init() {
   for (var i = 0; i < ROW * COLUMN; i++) {
@@ -12,7 +16,11 @@ function init() {
     $(this)
       .css({
         'top': Math.floor(index / COLUMN) * (WIDTH + MARGIN) + MARGIN + 'px',
-        'left': index % COLUMN * (WIDTH + MARGIN) + MARGIN + 'px'
+        'left': index % COLUMN * (WIDTH + MARGIN) + MARGIN + 'px',
+        'width': WIDTH + 'px',
+        'height': WIDTH + 'px',
+        'line-height': WIDTH - BORDER * 2 + 'px',
+        'font-size': WIDTH * .7 + 'px'
       });
   });
   // 鼠标滑过事件，取4个数字
@@ -27,7 +35,7 @@ function init() {
       count = 0;
       $('.main')
         .on('mousemove', function (e) {
-          var index = Math.floor((e.pageX - $('.main').offset().left) / 125) + COLUMN * Math.floor((e.pageY - $('.main').offset().top) / 125);
+          var index = Math.floor((e.pageX - $('.main').offset().left) / (MAIN_WIDTH / COLUMN)) + COLUMN * Math.floor((e.pageY - $('.main').offset().top) / (MAIN_WIDTH / ROW));
           if (!listHash[index] && count < 4) {
             listHash[index] = $('.block[data-in="' + index + '"]')
               .attr('data-toggle', count)
@@ -53,7 +61,7 @@ function init() {
          * 传入判断函数foo(), 如果返回为true, 执行销毁, false不销毁(暂定)
          */
         if (foo(listArr)) {
-        //if (1) {
+          //if (1) {
           var delay = 0;
           for (var i = 0; i < 4; i++) {
             setTimeout("remove_block($('.block[data-toggle=\"" + i + "\"]'))", delay);
@@ -92,7 +100,7 @@ function remove_block(ele) {
   add_block(hideBlockColumn)
 }
 function add_block(col) {
-  var newBlock = '<div class="block" data-in="' + col + '" style="top:' + MARGIN + 'px;left:' + parseInt(col % ROW * (WIDTH + MARGIN) + MARGIN) + 'px;display:none;">' + Math.ceil(Math.random() * 9) + '</div>';
+  var newBlock = '<div class="block" data-in="' + col + '" style="top:' + MARGIN + 'px;left:' + parseInt(col % ROW * (WIDTH + MARGIN) + MARGIN) + 'px;display:none;width:' + WIDTH + 'px;height:' + WIDTH + 'px;font-size:' + WIDTH * 0.7 + 'px;line-height:' + (WIDTH - BORDER * 2) + 'px">' + Math.ceil(Math.random() * 9) + '</div>';
   $('.main').append(newBlock);
   $('.block:hidden')
     .show()
