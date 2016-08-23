@@ -1,6 +1,6 @@
-$boardColorBorder: #000;
-$boardColor: lighten($boardColorBorder, 50%);
-$blockColor: #c65914;
+$boardColorBorder: #333;
+$boardColor: lighten($boardColorBorder, 70%);
+$blockColor: #FF768C;
 $blockColorBorder: darken($blockColor, 15%);
 $blockColorHover: darken($blockColor, 10%);
 
@@ -16,7 +16,7 @@ body {
   border: 5px solid $boardColorBorder;
   background: $boardColor;
   border-radius: 10px;
-  box-shadow: 3px 3px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5) inset;
   position: relative;
   .block {
     border: 3px solid $blockColorBorder;
@@ -28,7 +28,7 @@ body {
     text-align: center;
     color: #fff;
     text-shadow: 3px 3px rgba(0, 0, 0, 0.5);
-    box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
     transition: 500ms;
     animation-duration: 500ms;
     &.active {
