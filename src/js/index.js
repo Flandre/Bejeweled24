@@ -1,5 +1,5 @@
 // 定义常量
-var ROW = 4,
+var ROW = 5,
   COLUMN = 4,
   MARGIN = 7,
   WIDTH = 115;
@@ -12,7 +12,7 @@ function init() {
     $(this)
       .css({
         'top': Math.floor(index / COLUMN) * (WIDTH + MARGIN) + MARGIN + 'px',
-        'left': index % ROW * (WIDTH + MARGIN) + MARGIN + 'px'
+        'left': index % COLUMN * (WIDTH + MARGIN) + MARGIN + 'px'
       });
   });
   // 鼠标滑过事件，取4个数字
@@ -72,7 +72,7 @@ function init() {
 // 处理消除方块
 function remove_block(ele) {
   var index = ele.attr('data-in');
-  $('.block[data-in="' + index + '"]')
+  ele
     .css('z-index', '999')
     .addClass('rotateOut animated')
     .one('webkitAnimationEnd animationEnd', function () {
@@ -81,7 +81,7 @@ function remove_block(ele) {
   var hideBlockColumn = index % COLUMN;
   var hideBlockRow = Math.ceil(index / ROW);
   $('.block').each(function () {
-    if ($(this).attr('data-in') % COLUMN == hideBlockColumn && Math.ceil($(this).attr('data-in') / ROW) < hideBlockRow) {
+    if ($(this).attr('data-in') % COLUMN == hideBlockColumn && Math.ceil($(this).attr('data-in') / COLUMN) <= hideBlockRow) {
       $(this)
         .css({
           'top': parseInt($(this).css('top').split('px')[0]) + WIDTH + MARGIN + 'px'
