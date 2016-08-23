@@ -50,14 +50,15 @@ function init() {
         /*
          * 传入判断函数foo(), 如果返回为true, 执行销毁, false不销毁(暂定)
          */
-        // if (foo(listArr)) {
-        if (1) {
+        if (foo(listArr)) {
+        //if (1) {
           var delay = 0;
           for (var i = 0; i < 4; i++) {
             setTimeout("remove_block($('.block[data-toggle=\"" + i + "\"]'))", delay);
             delay += 500;
           }
         } else {
+          console.log("+1s");
           // 执行+1s操作
         }
       }

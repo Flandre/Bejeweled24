@@ -8,6 +8,10 @@ function test(){
 var goal  = 24;
 var equal=0.000001;
 
+function foo(arr){
+	return is24(arr);
+}
+
 var outputret=true;
 
 function is24(arr){
