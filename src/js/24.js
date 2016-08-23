@@ -9,6 +9,9 @@ var goal  = 24;
 var equal=0.000001;
 
 function foo(arr){
+	for(var i=0;i<arr.length;i++){
+		arr[i]=parseInt(arr[i]);
+	}
 	return is24(arr);
 }
 
