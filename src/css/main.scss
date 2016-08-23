@@ -1,11 +1,14 @@
+$boardColor: #9a9a9a;
+$boardColorBorder: darken($boardColor, 10%);
+
 body{
   user-select: none;
 }
 .main{
   width: 500px;
   height: 500px;
-  border: 3px solid #2d2d2d;
-  background: #9a9a9a;
+  border: 3px solid $boardColorBorder;
+  background: $boardColor;
   border-radius: 10px;
   position: relative;
   .block{

@@ -30,14 +30,14 @@ function init() {
         .on('mousemove', function (e) {
           var index = Math.floor((e.pageX - $('.main').offset().top) / 125) + COLUMN * Math.floor((e.pageY - $('.main').offset().left) / 125);
           if (!listHash[index] && count < 4) {
-            listHash[index] = $('.block:eq(' + index + ')').html();
-            $('.block[data-in="' + index + '"]').attr('data-toggle', count);
+            listHash[index] = $('.block[data-in="' + index + '"]').attr('data-toggle', count).html();
             count++;
           }
         })
     })
     .on('mouseup', function () {
       $('.main').off('mousemove');
+      console.log(listHash)
       var listArr = [];
       for (x in listHash) {
         listArr.push(listHash[x]);
