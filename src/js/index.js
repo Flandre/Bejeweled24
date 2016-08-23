@@ -54,7 +54,7 @@ function init() {
         if (1) {
           var delay = 0;
           for (var i = 0; i < 4; i++) {
-            setTimeout("drop_block(" + $('.block[data-toggle="' + i + '"]').attr('data-in') + ")", delay);
+            setTimeout("remove_block($('.block[data-toggle=\"" + i + "\"]'))", delay);
             delay += 500;
           }
         } else {
@@ -63,9 +63,9 @@ function init() {
       }
     })
 }
-// 处理下落
-function drop_block(index) {
-  console.log(index);
+// 处理消除方块
+function remove_block(ele) {
+  var index = ele.attr('data-in');
   $('.block[data-in="' + index + '"]')
     .css('z-index', '999')
     .addClass('rotateOut animated')
@@ -94,10 +94,6 @@ function add_block(col) {
     .one('webkitAnimationEnd animationEnd', function () {
       $(this).removeClass('zoomIn animated')
     });
-    // 移除点击事件
-    // .on('click', function () {
-    //   drop_block($(this).attr('data-in'));
-    // })
 }
 init();
 
