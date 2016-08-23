@@ -14,10 +14,6 @@ function init() {
         'top': Math.floor(index / COLUMN) * (WIDTH + MARGIN) + MARGIN + 'px',
         'left': index % ROW * (WIDTH + MARGIN) + MARGIN + 'px'
       });
-      //  移除点击事件
-      // .on('click', function () {
-      //   drop_block($(ele).attr('data-in'));
-      // })
   });
   // 鼠标滑过事件，取4个数字
   var listHash = {},
@@ -28,22 +24,26 @@ function init() {
       count = 0;
       $('.main')
         .on('mousemove', function (e) {
-          var index = Math.floor((e.pageX - $('.main').offset().top) / 125) + COLUMN * Math.floor((e.pageY - $('.main').offset().left) / 125);
+          console.log(e.pageX + ',' + e.pageY)
+          var index = Math.floor((e.pageX - $('.main').offset().left) / 125) + COLUMN * Math.floor((e.pageY - $('.main').offset().top) / 125);
           if (!listHash[index] && count < 4) {
-            listHash[index] = $('.block[data-in="' + index + '"]').attr('data-toggle', count).html();
+            listHash[index] = $('.block[data-in="' + index + '"]')
+              .attr('data-toggle', count)
+              .addClass('active press')
+              .html();
             count++;
           }
         })
     })
     .on('mouseup', function () {
       $('.main').off('mousemove');
-      console.log(listHash)
       var listArr = [];
       for (x in listHash) {
         listArr.push(listHash[x]);
       }
       if (listArr.length < 4) {
-        console.log('未取满4个数字')
+        console.log('未取满4个数字');
+        $('.block').removeClass('active press')
       } else {
         // 显示的数字
         console.log(listArr.sort());
@@ -58,6 +58,7 @@ function init() {
             delay += 500;
           }
         } else {
+          $('.block').removeClass('active press')
           console.log("+1s");
           // 执行+1s操作
         }
