@@ -1,8 +1,24 @@
 $boardColorBorder: #333;
 $boardColor: lighten($boardColorBorder, 70%);
-$blockColor: #FF768C;
-$blockColorBorder: darken($blockColor, 15%);
-$blockColorHover: darken($blockColor, 10%);
+$Color_default: #FFF;
+$Color_0: #FFF;
+$Color_1: darken(#FFF, 10%);
+$Color_2: darken(#FFF, 20%);
+$Color_3: darken(#FFF, 30%);
+$Color_4: darken(#FFF, 40%);
+$Color_5: darken(#FFF, 50%);
+$Color_6: darken(#FFF, 60%);
+$Color_7: darken(#FFF, 70%);
+$Color_8: darken(#FFF, 80%);
+$Color_9: darken(#FFF, 90%);
+
+@mixin blockcolor($blockColor: 10px) {
+  border: 3px solid darken($blockColor, 15%);
+  background: $blockColor;
+  &.active{
+    background: darken($blockColor, 10%);
+  }
+}
 
 body {
   user-select: none;
@@ -19,8 +35,7 @@ body {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5) inset;
   position: relative;
   .block {
-    border: 3px solid $blockColorBorder;
-    background: $blockColor;
+    @include blockcolor($Color_default);
     border-radius: 10px;
     position: absolute;
     font-size: 80px;
@@ -31,12 +46,15 @@ body {
     box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
     transition: 500ms;
     animation-duration: 500ms;
-    &.active {
-      background: $blockColorHover;
-    }
     &.press{
       box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
       transform: translate(2px,2px);
+    }
+    $color-collection: ($Color_0, $Color_1, $Color_2, $Color_3, $Color_4, $Color_5, $Color_6, $Color_7, $Color_8, $Color_9);
+    @for $i from 0 to length($color-collection) {
+      &.block-color-#{$i}{
+        @include blockcolor(nth($color-collection, $i+1))
+      }
     }
   }
 }
