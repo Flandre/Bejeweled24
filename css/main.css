@@ -1,0 +1,84 @@
+body {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
+.main {
+  width: 500px;
+  height: 500px;
+  margin: 30px auto;
+  box-sizing: content-box;
+  border: 5px solid #333;
+  background: #e6e6e6;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5) inset;
+  position: relative; }
+  .main .block {
+    border: 3px solid #ff2a4c;
+    background: #FF768C;
+    border-radius: 10px;
+    position: absolute;
+    font-size: 80px;
+    line-height: 115px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+    transition: 500ms;
+    animation-duration: 500ms; }
+    .main .block.active {
+      background: #ff4361; }
+    .main .block.press {
+      box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+      transform: translate(2px, 2px); }
+    .main .block.block-color-0 {
+      border: 3px solid #d9d9d9;
+      background: #FFF; }
+      .main .block.block-color-0.active {
+        background: #e6e6e6; }
+    .main .block.block-color-1 {
+      border: 3px solid #bfbfbf;
+      background: #e6e6e6; }
+      .main .block.block-color-1.active {
+        background: #cccccc; }
+    .main .block.block-color-2 {
+      border: 3px solid #a6a6a6;
+      background: #cccccc; }
+      .main .block.block-color-2.active {
+        background: #b3b3b3; }
+    .main .block.block-color-3 {
+      border: 3px solid #8c8c8c;
+      background: #b3b3b3; }
+      .main .block.block-color-3.active {
+        background: #999999; }
+    .main .block.block-color-4 {
+      border: 3px solid #737373;
+      background: #999999; }
+      .main .block.block-color-4.active {
+        background: gray; }
+    .main .block.block-color-5 {
+      border: 3px solid #595959;
+      background: gray; }
+      .main .block.block-color-5.active {
+        background: #666666; }
+    .main .block.block-color-6 {
+      border: 3px solid #404040;
+      background: #666666; }
+      .main .block.block-color-6.active {
+        background: #4d4d4d; }
+    .main .block.block-color-7 {
+      border: 3px solid #262626;
+      background: #4d4d4d; }
+      .main .block.block-color-7.active {
+        background: #333333; }
+    .main .block.block-color-8 {
+      border: 3px solid #0d0d0d;
+      background: #333333; }
+      .main .block.block-color-8.active {
+        background: #1a1a1a; }
+    .main .block.block-color-9 {
+      border: 3px solid black;
+      background: #1a1a1a; }
+      .main .block.block-color-9.active {
+        background: black; }
