@@ -106,6 +106,11 @@ function can(arr,last,ret){
 		return eq(last,ret);
 	}else{
 		var goallist = [ret+last,ret-last,ret*last,ret/last,last-ret,last/ret];
+		var type=1;
+		if(last==0){
+			goallist = [ret];
+			type=2;
+		}
 		for(var i=0;i<goallist.length;i++){
 			for(var j=0;j<arr.length;j++){
 				var tmp = new Array();
@@ -115,19 +120,25 @@ function can(arr,last,ret){
 				tmp.splice(j,1);
 				if(can(tmp,arr[j],goallist[i])){
 					if(outputret){
-						if(i==0){
-							console.log((ret+last)  + "-" + last + "=" + ret);
-						}else if(i==1){
-							console.log((ret-last)  + "+" + last + "=" + ret);
-						}else if(i==2){
-							console.log((ret*last)  + "/" + last + "=" + ret);
-						}else if(i==3){
-							console.log((ret/last)  + "*" + last + "=" + ret);
-						}else if(i==4){
-							console.log(last  + "-" + (last-ret) + "=" + ret);
-						}else if(i==5){
-							console.log(last  + "/" + (last/ret) + "=" + ret);
-						}						
+						if(type==1){
+							if(i==0){
+								console.log((ret+last)  + "-" + last + "=" + ret);
+							}else if(i==1){
+								console.log((ret-last)  + "+" + last + "=" + ret);
+							}else if(i==2){
+								console.log((ret*last)  + "/" + last + "=" + ret);
+							}else if(i==3){
+								console.log((ret/last)  + "*" + last + "=" + ret);
+							}else if(i==4){
+								console.log(last  + "-" + (last-ret) + "=" + ret);
+							}else if(i==5){
+								console.log(last  + "/" + (last/ret) + "=" + ret);
+							}
+						}else{
+							if(i==0){
+								console.log((ret+last)  + "-" + last + "=" + ret);
+							}
+						}
 					}
 					return true;
 				}
