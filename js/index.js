@@ -28,14 +28,14 @@ function init() {
   // 鼠标滑过事件，取4个数字
   var listHash = {},
     count = 0;
-  $('.main')
+  $(document)
     .on('mousedown', function () {
       $('.block')
         .removeClass('active press')
         .removeAttr('data-toggle');
       listHash = {};
       count = 0;
-      $('.main')
+      $(document)
         .on('mousemove', function (e) {
           var index = Math.floor((e.pageX - $('.main').offset().left) / (MAIN_WIDTH / COLUMN)) + COLUMN * Math.floor((e.pageY - $('.main').offset().top) / (MAIN_WIDTH / ROW));
           if (!listHash[index] && count < 4) {
@@ -48,7 +48,7 @@ function init() {
         })
     })
     .on('mouseup', function () {
-      $('.main').off('mousemove');
+      $(document).off('mousemove');
       var listArr = [];
       for (x in listHash) {
         listArr.push(listHash[x]);
