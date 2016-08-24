@@ -11,6 +11,10 @@ var level=20;
 function init() {
   // 定义游戏等级
 
+// 定义游戏等级
+
+// 初始化
+function init() {
   for (var i = 0; i < ROW * COLUMN; i++) {
     $('.main').append('<div class="block" data-in="' + i + '">' + Math.ceil(Math.random() * level) + '</div>')
   }
@@ -25,10 +29,11 @@ function init() {
         'font-size': WIDTH * .7 + 'px'
       });
   });
+
   // 鼠标滑过事件，取4个数字
   var listHash = {},
     count = 0;
-  $('.main')
+  $(document)
     .on('mousedown', function () {
       $('.block')
         .removeClass('active press')
@@ -37,6 +42,7 @@ function init() {
       count = 0;
       $('.main')
         .on('mousemove', function (e) {
+          console.log(e.pageX + ',' + e.pageY)
           var index = Math.floor((e.pageX - $('.main').offset().left) / (MAIN_WIDTH / COLUMN)) + COLUMN * Math.floor((e.pageY - $('.main').offset().top) / (MAIN_WIDTH / ROW));
           if (!listHash[index] && count < 4) {
             listHash[index] = $('.block[data-in="' + index + '"]')
@@ -114,7 +120,7 @@ function add_block(col) {
 
 
 // 为方块添加数字
-function addNumber(ele, level){
+function addNumber(ele){
 
 }
 init();
