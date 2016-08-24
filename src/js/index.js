@@ -6,13 +6,13 @@ var COLUMN = 4,
   MAIN_WIDTH = 500,
   WIDTH = (MAIN_WIDTH - MARGIN) / COLUMN - MARGIN;
 
-
+var level=20;
 // 初始化
 function init() {
   // 定义游戏等级
-  var level;
+
   for (var i = 0; i < ROW * COLUMN; i++) {
-    $('.main').append('<div class="block" data-in="' + i + '">' + Math.ceil(Math.random() * 9) + '</div>')
+    $('.main').append('<div class="block" data-in="' + i + '">' + Math.ceil(Math.random() * level) + '</div>')
   }
   $('.block').each(function (index) {
     $(this)
@@ -102,7 +102,7 @@ function remove_block(ele) {
   add_block(hideBlockColumn)
 }
 function add_block(col) {
-  var newBlock = '<div class="block" data-in="' + col + '" style="top:' + MARGIN + 'px;left:' + parseInt(col % ROW * (WIDTH + MARGIN) + MARGIN) + 'px;display:none;width:' + WIDTH + 'px;height:' + WIDTH + 'px;font-size:' + WIDTH * 0.7 + 'px;line-height:' + (WIDTH - BORDER * 2) + 'px">' + Math.ceil(Math.random() * 9) + '</div>';
+  var newBlock = '<div class="block" data-in="' + col + '" style="top:' + MARGIN + 'px;left:' + parseInt(col % ROW * (WIDTH + MARGIN) + MARGIN) + 'px;display:none;width:' + WIDTH + 'px;height:' + WIDTH + 'px;font-size:' + WIDTH * 0.7 + 'px;line-height:' + (WIDTH - BORDER * 2) + 'px">' + Math.ceil(Math.random() * level) + '</div>';
   $('.main').append(newBlock);
   $('.block:hidden')
     .show()
