@@ -6,12 +6,8 @@ var COLUMN = 4,
   MAIN_WIDTH = 500,
   WIDTH = (MAIN_WIDTH - MARGIN) / COLUMN - MARGIN;
 
-var level=20;
-// 初始化
-function init() {
-  // 定义游戏等级
-
 // 定义游戏等级
+var level=20;
 
 // 初始化
 function init() {
