@@ -9,6 +9,8 @@ var COLUMN = 4,
 
 // 初始化
 function init() {
+  // 定义游戏等级
+  var level;
   for (var i = 0; i < ROW * COLUMN; i++) {
     $('.main').append('<div class="block" data-in="' + i + '">' + Math.ceil(Math.random() * 9) + '</div>')
   }
@@ -108,6 +110,12 @@ function add_block(col) {
     .one('webkitAnimationEnd animationEnd', function () {
       $(this).removeClass('zoomIn animated')
     });
+}
+
+
+// 为方块添加数字
+function addNumber(ele, level){
+
 }
 init();
 
