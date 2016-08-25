@@ -1,5 +1,5 @@
 // 定义常量
-var COLUMN = 4,
+var COLUMN = 6,
   ROW = COLUMN,
   MARGIN = 7,
   BORDER = 3,
