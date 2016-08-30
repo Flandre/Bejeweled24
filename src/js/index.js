@@ -31,7 +31,7 @@ function init() {
     count = 0;
   $(document)
     .on('mousedown', function (e) {
-      e.preventDefaulet();
+      e.preventDefault();
       e.stopPropagation();
       $('.block')
         .removeClass('active press')
@@ -40,7 +40,7 @@ function init() {
       count = 0;
       $('.main')
         .on('mousemove', function (e) {
-          e.preventDefaulet();
+          e.preventDefault();
           e.stopPropagation();
           // console.log(e.pageX + ',' + e.pageY)
           var index = Math.floor((e.pageX - $('.main').offset().left) / (MAIN_WIDTH / COLUMN)) + COLUMN * Math.floor((e.pageY - $('.main').offset().top) / (MAIN_WIDTH / ROW));
