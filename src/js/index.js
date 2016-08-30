@@ -30,7 +30,9 @@ function init() {
   var listHash = {},
     count = 0;
   $(document)
-    .on('mousedown', function () {
+    .on('mousedown', function (e) {
+      e.preventDefaulet();
+      e.stopPropagation();
       $('.block')
         .removeClass('active press')
         .removeAttr('data-toggle');
@@ -38,7 +40,9 @@ function init() {
       count = 0;
       $('.main')
         .on('mousemove', function (e) {
-          console.log(e.pageX + ',' + e.pageY)
+          e.preventDefaulet();
+          e.stopPropagation();
+          // console.log(e.pageX + ',' + e.pageY)
           var index = Math.floor((e.pageX - $('.main').offset().left) / (MAIN_WIDTH / COLUMN)) + COLUMN * Math.floor((e.pageY - $('.main').offset().top) / (MAIN_WIDTH / ROW));
           if (!listHash[index] && count < 4) {
             listHash[index] = $('.block[data-in="' + index + '"]')
